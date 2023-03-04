@@ -26,7 +26,16 @@ export const RecipeTitle = styled.h2`
   text-align: center;
 `;
 
-export const RecipeImage = styled.img``;
+export const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const RecipeImage = styled.img`
+  width: 500px;
+  height: 500px;
+`;
 
 export const Label = styled.h2`
   text-align: center;

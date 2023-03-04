@@ -15,6 +15,7 @@ import {
   SectionLabel,
   Title,
   TopContainer,
+  ImageContainer,
 } from "./Recipe.styled";
 
 function Recipe() {
@@ -61,7 +62,9 @@ function Recipe() {
         <Title to={"/"}>Recipe</Title>
       </div>
       <RecipeContainer>
-        <RecipeImage src={data.image} alt={data.title} />
+        <ImageContainer>
+          <RecipeImage src={data.image} alt={data.title} />
+        </ImageContainer>
         <RecipeTitle>{data.title}</RecipeTitle>
         <TopContainer>
           <SectionLabel>Ingredients</SectionLabel>
