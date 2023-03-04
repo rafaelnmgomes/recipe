@@ -85,6 +85,7 @@ function Home() {
           <SearchIcon />
         </SearchButton>
       </SearchBarContainer>
+      <div>Filter by cuisine</div>
       <MultiSelect
         options={cuisines}
         value={filters}
