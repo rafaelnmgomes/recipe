@@ -27,7 +27,6 @@ function Recipe() {
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
       )
       .then((response) => {
-        console.log(response.data);
         setData(response.data);
       })
       .catch((error) => {

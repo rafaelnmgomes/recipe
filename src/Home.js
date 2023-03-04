@@ -46,12 +46,13 @@ function Home() {
   const [search, setSearch] = React.useState("");
 
   const getRecipes = () => {
+    const filterString = filters.map((filter) => filter.value).join(",");
+
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}&cuisine=${filters}&number=5&query=${search}`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}&cuisine=${filterString}&number=5&query=${search}`
       )
       .then((response) => {
-        console.log(response.data);
         setData(response.data.results);
       })
       .catch((error) => {

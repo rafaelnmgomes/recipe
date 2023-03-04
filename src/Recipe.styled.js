@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Open-Sans, Helvetica, Sans-Serif;
 `;
 
 export const Title = styled(Link)`
