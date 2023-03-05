@@ -9,10 +9,22 @@ export const Container = styled.div`
   font-family: Open-Sans, Helvetica, Sans-Serif;
 `;
 
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
 export const Title = styled(Link)`
   text-decoration: none;
   color: #000;
   font-size: 40px;
+`;
+
+export const BackText = styled(Link)`
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
 `;
 
 export const TopContainer = styled.div`
@@ -20,7 +32,18 @@ export const TopContainer = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-export const SectionLabel = styled.h2``;
+export const SectionLabel = styled.h2`
+  text-align: center;
+`;
+
+export const LoadingContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif")
+    center no-repeat;
+  z-index: 1;
+`;
 
 export const RecipeTitle = styled.h2`
   text-align: center;
@@ -54,6 +77,7 @@ export const RecipeIngredients = styled.ul`
 
 export const RecipeIngredient = styled.li`
   margin-bottom: 10px;
+  text-transform: capitalize;
 `;
 
 export const RecipeInstructions = styled.ol`
@@ -72,4 +96,5 @@ export const HealthLabels = styled.ul`
 
 export const HealthLabel = styled.li`
   margin-bottom: 10px;
+  text-transform: capitalize;
 `;

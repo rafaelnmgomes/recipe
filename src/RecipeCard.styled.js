@@ -10,6 +10,11 @@ export const Container = styled.div`
   width: 400px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
 `;
 
 export const Router = styled(Link)`
@@ -21,6 +26,7 @@ export const CardTitle = styled.h2`
   font-size: 20px;
   margin-bottom: 20px;
   text-align: center;
+  margin: 40px;
 `;
 
 export const CardImage = styled.img`

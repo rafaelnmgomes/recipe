@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import DOMPurify from "dompurify";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import {
   Container,
   HealthLabel,
@@ -13,9 +15,11 @@ import {
   RecipeInstructions,
   RecipeTitle,
   SectionLabel,
-  Title,
   TopContainer,
   ImageContainer,
+  LoadingContainer,
+  BackText,
+  Header,
 } from "./Recipe.styled";
 
 function Recipe() {
@@ -39,28 +43,24 @@ function Recipe() {
     getRecipeInformation();
   }, []);
 
-  if (data.length === 0)
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+  if (data.length === 0) return <LoadingContainer />;
 
-  const instructions = data.instructions
-    .split("<li>")
-    .join("")
-    .split("</li>")
-    .join(".")
-    .split("<ol>")
-    .join("")
-    .split("</ol>")
-    .join("");
+  const getIntructions = () => {
+    const instructions = data.instructions
+      .split("<li>")
+      .join("")
+      .split("</li>")
+      .join(".");
+
+    return DOMPurify.sanitize(instructions, { ALLOWED_TAGS: [] });
+  };
 
   return (
     <Container>
-      <div>
-        <Title to={"/"}>Recipe</Title>
-      </div>
+      <Header>
+        <ArrowBackIosIcon />
+        <BackText to={"/"}>Home</BackText>
+      </Header>
       <RecipeContainer>
         <ImageContainer>
           <RecipeImage src={data.image} alt={data.title} />
@@ -68,6 +68,7 @@ function Recipe() {
         <RecipeTitle>{data.title}</RecipeTitle>
         <TopContainer>
           <SectionLabel>Ingredients</SectionLabel>
+          <SectionLabel>Health Labels</SectionLabel>
           <RecipeIngredients>
             {data.extendedIngredients.map((ingredient) => {
               return (
@@ -77,7 +78,6 @@ function Recipe() {
               );
             })}
           </RecipeIngredients>
-          <SectionLabel>Health Labels</SectionLabel>
           <HealthLabels>
             {data.diets.map((diet) => {
               return <HealthLabel key={diet}>{diet}</HealthLabel>;
@@ -86,11 +86,13 @@ function Recipe() {
         </TopContainer>
         <Label>Instructions</Label>
         <RecipeInstructions>
-          {instructions.split(".").map((instruction, index) => {
-            return (
-              <RecipeInstruction key={index}>{instruction}</RecipeInstruction>
-            );
-          })}
+          {getIntructions()
+            .split(".")
+            .map((instruction, index) => {
+              return (
+                <RecipeInstruction key={index}>{instruction}</RecipeInstruction>
+              );
+            })}
         </RecipeInstructions>
       </RecipeContainer>
     </Container>
