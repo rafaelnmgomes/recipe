@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import DOMPurify from "dompurify";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import {
   Container,
   HealthLabel,
@@ -18,15 +17,13 @@ import {
   TopContainer,
   ImageContainer,
   LoadingContainer,
-  BackText,
-  Header,
 } from "./Recipe.styled";
 
 function Recipe() {
   const [data, setData] = React.useState([]);
+  const id = window.location.pathname.split("/")[2];
 
   const getRecipeInformation = () => {
-    const id = window.location.pathname.split("/")[2];
     axios
       .get(
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
@@ -57,10 +54,6 @@ function Recipe() {
 
   return (
     <Container>
-      <Header>
-        <ArrowBackIosIcon />
-        <BackText to={"/"}>Home</BackText>
-      </Header>
       <RecipeContainer>
         <ImageContainer>
           <RecipeImage src={data.image} alt={data.title} />
