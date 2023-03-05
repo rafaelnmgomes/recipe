@@ -1,36 +1,34 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { redirect } from "react-router-dom";
-import { signInWithGoogle, logInWithEmailAndPassword } from "./api";
-import {
-  Container,
-  Button,
-  Form,
-  GoogleButton,
-  Input,
-  Label,
-  Title,
-} from "./Login.styled";
+import { registerWithEmailAndPassword } from "./api";
+import { Container, Button, Form, Input, Label, Title } from "./Login.styled";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    logInWithEmailAndPassword(email, password);
-    redirect("/");
-  };
 
-  const handleGoogleLogin = (e) => {
-    e.preventDefault();
-    signInWithGoogle();
+    if (!email) {
+      toast.error("Email is required");
+      return;
+    }
+
+    if (!password) {
+      toast.error("Password is required");
+      return;
+    }
+
+    registerWithEmailAndPassword(email, password);
     redirect("/");
   };
 
   return (
     <Container>
       <Form>
-        <Title>Sign in</Title>
+        <Title>Sign up</Title>
         <Label>Email</Label>
         <Input
           onChange={(e) => setEmail(e.target.value)}
@@ -43,10 +41,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <Button onClick={handleLogin}>Sign In</Button>
-        <GoogleButton onClick={handleGoogleLogin}>
-          Login with Google
-        </GoogleButton>
+        <Button onClick={handleSubmit}>Sign Up</Button>
       </Form>
     </Container>
   );

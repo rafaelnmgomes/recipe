@@ -24,4 +24,7 @@ export const NavButton = styled(Link)`
     background-color: #000;
     color: #fff;
   }
+  &:first-child {
+    margin-right: 10px;
+  }
 `;

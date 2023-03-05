@@ -5,6 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Recipe from "./Recipe";
+import Signup from "./Signup";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Toaster position="bottom-center" />
     </>
