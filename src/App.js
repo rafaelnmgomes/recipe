@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Home from "./Home";
-import Login from "./Login";
-import NavBar from "./NavBar";
-import Recipe from "./Recipe";
-import Signup from "./Signup";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import NavBar from "./components/Navbar/NavBar";
+import Recipe from "./pages/Recipe/Recipe";
+import Signup from "./pages/Signup/Signup";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { redirect } from "react-router-dom";
-import { auth, logout } from "./api";
+import { auth, logout } from "../../api";
 import { Container, NavButton } from "./NavBar.styled";
 
 function NavBar() {

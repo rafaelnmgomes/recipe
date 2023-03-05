@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { redirect } from "react-router-dom";
-import { registerWithEmailAndPassword } from "./api";
-import { Container, Button, Form, Input, Label, Title } from "./Login.styled";
+import { registerWithEmailAndPassword } from "../../api";
+import { Container, Button, Form, Input, Label, Title } from "./Signup.styled";
 
 function Login() {
   const [email, setEmail] = useState("");

@@ -7,7 +7,7 @@ import {
   SearchButton,
   SearchBarContainer,
 } from "./Home.styled";
-import RecipeCard from "./RecipeCard";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import SearchIcon from "@mui/icons-material/Search";
 import { MultiSelect } from "react-multi-select-component";
 import axios from "axios";
